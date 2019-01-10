@@ -9,10 +9,19 @@ class Artist < ActiveRecord::Base
 
   def self.find_by_slug(slug)
     array_of_words = slug.split("-")
-    array_of_words.map! do |word|
-      word.capitalize
-    end
     @name = array_of_words.join(" ")
-    Artist.find_by(name: @name)
+    hash_of_artists = Artist.lowercase_titles
+    @artist_id = hash_of_artists[@name]
+    Artist.find(@artist_id)
+  end
+
+  def self.lowercase_titles
+    new_hash = {}
+    Artist.all.each do |artist|
+      lowercase_name = artist.slug.split("-").join(" ")
+      new_hash[lowercase_name] = artist.id
+    end
+    new_hash
+    #=> {"artist title"=>1, "artist two"=>2, }
   end
 end

@@ -102,10 +102,11 @@ describe "Playlister Basics" do
     describe "/artists/:slug" do
       before do
         visit "/artists/#{@artist.slug}"
+        # binding.pry
       end
 
       it 'responds with a 200 status code' do
-        binding.pry
+        # binding.pry
         expect(page.status_code).to eq(200)
       end
 
