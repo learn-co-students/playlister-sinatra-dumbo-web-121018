@@ -25,15 +25,12 @@ class SongsController < ApplicationController
       song.song_genres.build(genre: genre)
     end
     song.save
-    flash.now[:notice] = "Thanks for signing up!"
+    flash.now[:notice] = 'Successfully updated song.'
     redirect "/songs/#{song.slug}"
   end
 
   get '/songs/:slug' do
     @song = Song.find_by_slug(params[:slug])
-    @success_message = session[:success_message]
-    session[:success_message] = nil
-
     erb :"/songs/show"
   end
 
@@ -55,7 +52,7 @@ class SongsController < ApplicationController
     end
     song.save
     artist.save
-    session[:success_message] = "Song successfully updated."
+    flash.now[:notice] = 'Successfully updated song.'
     redirect "/songs/#{song.slug}"
   end
 end
