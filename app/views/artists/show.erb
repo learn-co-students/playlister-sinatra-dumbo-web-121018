@@ -8,6 +8,6 @@
 <h4> Genres: </h4>
 <ul>
 <%  @artist.genres.each do |genre|  %>
-<li><a href="/genres/<%= genre.slug %>" id="<%=genre.name%>"><%= genre.name.capitalize %></a></li>
+<li><a href="/genres/<%= genre.slug %>"><%= genre.name %></a></li>
 <% end %>
 </ul>

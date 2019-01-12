@@ -24,7 +24,7 @@ class SongsController < ApplicationController
       song.song_genres.build(genre: genre)
     end
     song.save
-    flash.now[:notice] = 'Successfully updated song.'
+    flash[:message] = 'Successfully created song.'
     redirect "/songs/#{song.slug}"
   end
 
@@ -51,7 +51,7 @@ class SongsController < ApplicationController
     end
     song.save
     artist.save
-    flash.now[:notice] = 'Successfully updated song.'
+    flash[:message] = 'Successfully updated song.'
     redirect "/songs/#{song.slug}"
   end
 end
