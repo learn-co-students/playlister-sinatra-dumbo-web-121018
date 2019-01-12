@@ -2,7 +2,6 @@ require 'rack-flash'
 
 class SongsController < ApplicationController
   use Rack::Flash
-  enable :sessions
   # Index Action
   get '/songs' do
     @songs = Song.all
